@@ -12,7 +12,7 @@
  const float PPR                         = 17.0;      // 엔코더 PPR
  const float GEAR_RATIO                  = 21.0;      // 감속비
  const float ENCODER_DECODER_FACTOR      = 4.0;       // 디코딩 배수 (Quadrature x4)
- const float WHEEL_DIAMETER_MM           = 70.0;      // 바퀴 직경 (mm)
+ const float WHEEL_DIAMETER_MM           = 72.0;      // 바퀴 직경 (mm)
  const float WHEEL_CIRCUMFERENCE_MM      = WHEEL_DIAMETER_MM * PI;
  // MM당 펄스수 = (PPR * 감속비 * 디코딩 배수) / 바퀴 둘레(mm)
  const float PULSES_PER_MM               = (PPR * GEAR_RATIO * ENCODER_DECODER_FACTOR) / WHEEL_CIRCUMFERENCE_MM;
@@ -41,8 +41,8 @@
  volatile long rightTargetPosition = 0;
  
  // PID 제어 관련 상수
- const unsigned long CONTROL_INTERVAL = 20; // 20ms
- float Kp = 0.03;
+ const unsigned long CONTROL_INTERVAL = 10; // 10ms
+ float Kp = 0.1;
  float Ki = 0;
  float Kd = 0;
  
@@ -117,8 +117,8 @@
    if (currentTime - prevTime >= CONTROL_INTERVAL) {
      if (isMoving) {
        updatePID();
-       if (abs(leftTargetPosition  - leftEncoderCount) < 10 &&
-           abs(rightTargetPosition - rightEncoderCount) < 10) {
+       if (abs(leftTargetPosition  - leftEncoderCount) < 100 &&
+           abs(rightTargetPosition - rightEncoderCount) < 100) {
          stopMotors();
          isMoving = false;
          Serial.println("목표 위치에 도달했습니다.");
@@ -150,11 +150,11 @@
    long pulseOffset = (long)(moveDistanceMM * PULSES_PER_MM);
    if (forward) {
      leftTargetPosition  = leftEncoderCount  + pulseOffset;
-     rightTargetPosition = rightEncoderCount + pulseOffset;
+     rightTargetPosition = rightEncoderCount - pulseOffset;
      Serial.println("앞으로 이동합니다.");
    } else {
      leftTargetPosition  = leftEncoderCount  - pulseOffset;
-     rightTargetPosition = rightEncoderCount - pulseOffset;
+     rightTargetPosition = rightEncoderCount + pulseOffset;
      Serial.println("뒤로 이동합니다.");
    }
    leftPrevError = rightPrevError = 0;
@@ -175,6 +175,7 @@
    leftIntegral    = constrain(leftIntegral, -100, 100);
    long leftDeriv  = (leftError - leftPrevError) / CONTROL_INTERVAL;
    float leftOut   = Kp*leftError + Ki*leftIntegral + Kd*leftDeriv;
+   leftOut = abs(leftOut);
    leftPWM        = constrain((int)leftOut, 0, 60);
    analogWrite(L_ENA, leftPWM);
  
@@ -183,7 +184,8 @@
    rightIntegral   = constrain(rightIntegral, -100, 100);
    long rightDeriv = (rightError - rightPrevError) / CONTROL_INTERVAL;
    float rightOut  = Kp*rightError + Ki*rightIntegral + Kd*rightDeriv;
-   rightPWM       = constrain((int)rightOut, 0, 60);
+   rightOut = abs(rightOut);
+   rightPWM       = constrain((int)rightOut, 0, 70);
    analogWrite(R_ENB, rightPWM);
  
    leftPrevError  = leftError;
