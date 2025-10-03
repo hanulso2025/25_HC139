@@ -120,7 +120,7 @@
 ## **💡4. 작품 소개영상**
 > <sub>이미지를 클릭하면 유튜브 시연 영상을 보실 수 있습니다.</sub> 
 
-[![한이음 드림업 프로젝트 소개](images/1.png)](https://www.youtube.com/watch?v=wbkJ4pecB-A)
+[![한이음 드림업 프로젝트 소개](images/Thumbnail.png)](https://www.youtube.com/watch?v=wbkJ4pecB-A)
 
 ---
 ## **💡5. 핵심 소스코드**
@@ -156,37 +156,40 @@ static bool trilat2D(const Vec3 a[3], const float r[3], float &x, float &y) {
 }
 ```
 
-- **Rule-based 경로 계획 알고리즘**  
-차량이 진입한 후, 목적지 주차 구역까지의 waypoints를 계산하는 규칙 기반 알고리즘입니다.
-주차장 구조를 미리 정의한 후 선택된 주차 구역 번호에 따라 필수 경유지를 다르게 설정합니다.
-간단한 if-else 규칙을 통해 차량의 이동 경로를 유도하며, 목적지 좌표(target_waypoint)까지의 최적 경로를 반환합니다. 
+- **BFS 기반 주차공간 배정 알고리즘**  
+BFS 기반 탐색 로직을 활용해 차량의 유형(장애인/전기차/일반차)과 목적지(입구 위치)를 고려하여
+가장 가까운 주차 공간을 자동으로 배정하는 알고리즘입니다.
 
 ```python
-def calculate_waypoints(self, target_spot: int) -> List[Tuple[int, int]]:
-        if target_spot not in self.parking_waypoints:
-            return []
-        
-        # 선택된 주차 구역 좌표
-        target_waypoint = self.parking_waypoints[target_spot]
+def assign_parking_spot_with_bfs(self, preferred: str, elec: bool, disabled: bool, destination: int) -> Optional[int]:
+    """destination 기반 BFS 주차공간 배정 로직"""
 
-        # 항상 거쳐야 하는 시작 지점 (입구)
-        waypoints = [self.MANDATORY_WAYPOINT] 
-        
-        # 구역별 규칙 기반 경로 설정
-        if target_spot == 1:              
-            waypoints.append(target_waypoint)
-        elif target_spot in [2, 3, 4, 5]:  
-            waypoints.append((200, 1475))     
-            waypoints.append(target_waypoint)
-        elif target_spot == 6:  
-            waypoints.append((200, 1475))
-            waypoints.append((1475, 1475))    
-            waypoints.append(target_waypoint)
-        elif target_spot == 7:  
-            waypoints.append((1475, 925))
-            waypoints.append(target_waypoint)
-        elif target_spot in [8, 9, 10, 11]: 
-            waypoints.append(target_waypoint)
-        
-        return waypoints
+    # 이미 점유된 공간 수집
+    occupied_spots = {v.parked_spot for v in self.vehicles.values() if v.is_parked and v.parked_spot}
+
+    # 차량 유형별 주차구역 정의
+    disabled_spots, elec_spots, general_spots = [1,6,7], [4,5,10,11], [2,3,8,9]
+
+    # 사용 가능한 주차구역(점유되지 않은 것만)
+    available_disabled = [s for s in disabled_spots if s not in occupied_spots]
+    available_elec = [s for s in elec_spots if s not in occupied_spots]
+    available_general = [s for s in general_spots if s not in occupied_spots]
+
+    # 현재 사용 가능한 공간 로깅
+    self.get_logger().info(f'사용 가능 - 장애인:{len(available_disabled)} 전기차:{len(available_elec)} 일반:{len(available_general)}')
+
+    # 입구 좌표 (0: 본관, 1: 별관, 2: 주차타워)
+    entrance_coords = {0:(0,1800), 1:(1800,1800), 2:(1800,600)}
+
+    # 유효하지 않은 destination 입력 시 기본값(본관) 적용
+    if destination not in entrance_coords:
+        destination = 0
+        self.get_logger().warn('잘못된 destination 값 → 기본값(0: 본관) 적용')
+
+    entrance_x, entrance_y = entrance_coords[destination]
+
+    # BFS 우선순위 탐색을 위한 거리 기준 정렬
+    sorted_disabled = self._sort_spots_by_distance(available_disabled, entrance_x, entrance_y)
+    sorted_elec = self._sort_spots_by_distance(available_elec, entrance_x, entrance_y)
+    sorted_general = self._sort_spots_by_distance(available_general, entrance_x, entrance_y)
 ```
