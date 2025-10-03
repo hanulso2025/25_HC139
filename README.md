@@ -16,19 +16,58 @@
 
 **1-3. 프로젝트 특장점**
 - UWB와 ESP32 기반 고정밀 위치 추적 (실내 주차장 환경에서도 안정적 측위 가능)
+- 3단계 필터링 알고리즘 적용 (중간값 필터 → 이상치 검출 → 칼만 필터) 
+
+  <img width="700" alt="image" src="images\filtering.png" /></br>
+
 - 스마트 스토퍼를 통한 장애인 전용 주차구역 무단 진입 차단
 - 차량 유형별 맞춤형 주차 배정 서비스 (일반/장애인/전기차)
 - 차량 내 HMI 안내 및 관제 대시보드 실시간 모니터링
 - ROS2 기반 통합 아키텍처 (micro-ROS로 ESP32까지 연동)
 
+
 **1-4. 주요 기능**
-- UWB 기반 위치 추적 : 태그–앵커 삼변측량 알고리즘으로 차량 위치를 센티미터 단위로 정밀 추적
-- 경로 안내 기능 : 규칙 기반 알고리즘으로 빈 주차공간까지 최적 경로를 산출하고 HMI 화면에 시각화
-- 목적지 기반 추천 : 사용자가 선택한 목적지 주변의 잔여 주차공간을 차량 유형별로 자동 추천  
-  (ex. 백화점 내 영화관, 본관 입구, 문화시설 이용 고객에게 최적 주차 위치 제공)
-- 차량 판별 기능 : BLE RSSI 신호를 활용해 차량을 자동 판별하고 유형(일반/전기/장애인) 분류
-- 스마트 스토퍼 제어 : 인증된 장애인 차량만 진입을 허용하고 일반 차량은 물리적으로 차단
-- 실시간 관제 서비스 : 관제 대시보드를 통해 전체 주차장 현황과 차량 이동 상태를 실시간 모니터링
+
+<table>
+  <tr>
+    <td align="center"><b>UWB 기반 위치 추적</b></td>
+    <td align="center"><b>경로 안내 기능</b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="images/uwb.png" width="250"></td>
+    <td align="center"><img src="images/path.png" width="250"></td>
+  </tr>
+  <tr>
+    <td align="center">태그-앵커 삼변측량 알고리즘으로 차량 위치를 센티미터 단위로 정밀 추적</td>
+    <td align="center">규칙 기반 알고리즘으로 빈 주차공간까지 최적 경로 산출 후 HMI 화면 시각화</td>
+  </tr>
+  <tr>
+    <td align="center"><b>목적지 기반 추천</b></td>
+    <td align="center"><b>차량 판별 기능</b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="images/recommend.png" width="250"></td>
+    <td align="center"><img src="images/ble.png" width="250"></td>
+  </tr>
+  <tr>
+    <td align="center">사용자가 선택한 목적지 주변 잔여 주차공간을 차량 유형별로 자동 추천</td>
+    <td align="center">BLE RSSI 신호로 차량을 자동 판별하고<br>유형(일반/전기/장애인) 분류</td>
+  </tr>
+  <tr>
+    <td align="center"><b>스마트 스토퍼 제어</b></td>
+    <td align="center"><b>실시간 관제 서비스</b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="images/stopper.png" width="250"></td>
+    <td align="center"><img src="images/dashboard.png" width="250"></td>
+  </tr>
+  <tr>
+    <td align="center">인증된 장애인 차량만 진입 허용, 일반 차량은 물리적으로 차단</td>
+    <td align="center">관제 대시보드를 통해 주차장 현황과<br>차량 이동 상태를 실시간 모니터링</td>
+  </tr>
+</table>
+
+
 
 **1-5. 기대 효과 및 활용 분야**
 - 기대 효과 : 주차 공간 탐색 시간 단축으로 주차 효율성 향상, 장애인 전용 구역 무단 점유 방지로 이동권 보장, 주차 관리의 자동화로 운영 효율성 제고
@@ -73,9 +112,15 @@
 |---|
 | [<img src="images\HW%20구성도.png" width="700" alt="H/W 구성도">](images\HW%20구성도.png) |
 
+| **엔티티 관계도** |
+|---|
+| [<img src="images\엔티티%20관계도.png" width="700" alt="엔티티 구성도">](images\엔티티%20관계도.png) |
+
 ---
 ## **💡4. 작품 소개영상**
-[![한이음 드림업 프로젝트 소개](images\1.png)](https://www.youtube.com/watch?v=wbkJ4pecB-A)
+> <sub>이미지를 클릭하면 유튜브 시연 영상을 보실 수 있습니다.</sub> 
+
+[![한이음 드림업 프로젝트 소개](images/1.png)](https://www.youtube.com/watch?v=wbkJ4pecB-A)
 
 ---
 ## **💡5. 핵심 소스코드**
