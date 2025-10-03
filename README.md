@@ -16,10 +16,9 @@
 
 **1-3. 프로젝트 특장점**
 - UWB와 ESP32 기반 고정밀 위치 추적 (실내 주차장 환경에서도 안정적 측위 가능)
-- 3단계 필터링 알고리즘 적용 (중간값 필터 → 이상치 검출 → 칼만 필터) 
-
+- 3단계 필터링 알고리즘 적용 (중간값 필터 → 이상치 검출 → 칼만 필터)
+ 
   <img width="700" alt="image" src="images\filtering.png" /></br>
-
 - 스마트 스토퍼를 통한 장애인 전용 주차구역 무단 진입 차단
 - 차량 유형별 맞춤형 주차 배정 서비스 (일반/장애인/전기차)
 - 차량 내 HMI 안내 및 관제 대시보드 실시간 모니터링
@@ -94,8 +93,8 @@
 |:---:|:---:|:---:|:---:|:---:|
 | <img width="120" height="150" src="images/한경빈.jpg" > | <img width="120" height="150" src="images/장준표.jpg" > | <img width="120" height="150" src="images/장서윤.jpg" > | <img width="120" height="150" src="images/정재윤.png" > | <img width="120" height="150" src="images/이유진.jpg" > |
 | 🔗 [GitHub](https://github.com/hustlehan) | 🔗 [GitHub](https://github.com/IAMJP520) | 🔗 [GitHub](https://github.com/seoyun9) | 🔗 [GitHub](https://github.com/jjletsgo) | 🔗 [GitHub](https://github.com/euzin3) |
-| • ROS2 노드 개발 <br> • 서버 및 관제 시스템 구축 <br> • 경로 계획 <br> &nbsp; | • 차량 HMI 인터페이스 구축 <br> • TCP/IP 기반 소켓 통신 모듈 개발 <br> &nbsp; | • 주차장 차단기 제어 <br> • BLE RSSI 기반 차량 정보 수신 <br> &nbsp; | • HW 및 시스템 아키텍처 설계 <br> • 스마트 스토퍼 제어 <br> • UWB 삼변측량 및 필터링 | • UWB 삼변측량 및 필터링 <br> &nbsp; <br> &nbsp; |
-| ![Team Leader](https://img.shields.io/badge/Team-Leader-blue) <br> ![ROS2](https://img.shields.io/badge/ROS2-Node-brightgreen) <br> ![Server](https://img.shields.io/badge/Server-Control-lightblue) | ![HMI](https://img.shields.io/badge/HMI-Frontend-orange) <br> ![Comm](https://img.shields.io/badge/TCP%2FIP-Socket-yellowgreen) <br> &nbsp; | ![BLE](https://img.shields.io/badge/BLE-Comm-lightgrey) <br> ![Barrier](https://img.shields.io/badge/Barrier-Control-yellow) <br> &nbsp; | ![HW](https://img.shields.io/badge/HW-Design-brown) <br> ![Architecture](https://img.shields.io/badge/System-Architecture-lightseagreen) <br> ![UWB](https://img.shields.io/badge/UWB-Algorithm-red) | ![UWB](https://img.shields.io/badge/UWB-Algorithm-red) <br> &nbsp; <br> &nbsp; |
+| • ROS2 노드 개발 <br> • 서버 및 관제 시스템 구축 <br> • 경로 계획 <br> &nbsp; | • 차량 HMI 인터페이스 구축 <br> • TCP/IP 기반 소켓 통신 모듈 개발 <br> &nbsp; | • micro-ROS 기반 통신 모듈 개발 <br> • BLE RSSI 기반 차량 정보 수신 <br> &nbsp; | • HW 및 시스템 아키텍처 설계 <br> • 스마트 스토퍼 제어 <br> • UWB 삼변측량 및 필터링 | • UWB 삼변측량 및 필터링 <br> &nbsp; <br> &nbsp; |
+| ![Team Leader](https://img.shields.io/badge/Team-Leader-blue) <br> ![ROS2](https://img.shields.io/badge/ROS2-Node-brightgreen) <br> ![Server](https://img.shields.io/badge/Server-Control-lightblue) | ![HMI](https://img.shields.io/badge/HMI-Frontend-orange) <br> ![Comm](https://img.shields.io/badge/TCP%2FIP-Socket-yellowgreen) <br> &nbsp; | ![micro-ROS](https://img.shields.io/badge/micro--ROS-Comm-9cf) <br> ![BLE](https://img.shields.io/badge/BLE-Comm-lightgrey) <br> &nbsp; | ![HW](https://img.shields.io/badge/HW-Design-brown) <br> ![Architecture](https://img.shields.io/badge/System-Architecture-lightseagreen) <br> ![UWB](https://img.shields.io/badge/UWB-Algorithm-red) | ![UWB](https://img.shields.io/badge/UWB-Algorithm-red) <br> &nbsp; <br> &nbsp; |
 
 
 ---
