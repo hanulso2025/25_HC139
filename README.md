@@ -6,10 +6,13 @@
 - 프로젝트 명 : UWB 기반 주차 유도 시스템 및 스마트 스토퍼
 - 프로젝트 정의 : 차량의 위치를 정밀하게 추적하여 운전자에게 빈 주차공간까지 최적 경로를 안내하고, 장애인 구역 무단 진입을 차단하는 통합 주차 솔루션
 
-  <img width="700" alt="image" src="image.png" /></br>
+  <img width="700" alt="image" src="images\image.png" /></br>
 
 **1-2. 개발 배경 및 필요성**
-- 현대 사회에서 주차 공간 부족은 운전자에게 큰 불편과 스트레스를 초래하고 있으며, 장시간의 주차 공간 탐색은 불필요한 공회전으로 이어져 환경 문제를 악화시키고 있습니다. 또한 장애인 전용 주차구역의 불법 주차는 최근 급격히 증가하여 사회적 갈등과 민원 문제로 대두되고 있습니다. 이에 따라, 차량의 위치를 정밀하게 추적하고 장애인 구역 무단 점유를 사전에 차단할 수 있는 차세대 통합 주차 관리 시스템의 필요성이 커지고 있습니다.
+- 현대 사회에서 주차 공간 부족은 운전자에게 큰 불편과 스트레스를 초래하고 있으며, 장시간의 주차 공간 탐색은 불필요한 공회전으로 이어져 환경 문제를 악화시키고 있습니다. 
+- 장애인 전용 주차구역의 불법 주차는 최근 급격히 증가하여 사회적 갈등과 민원 문제로 대두되고 있습니다. 
+- 이에 따라, 차량의 위치를 정밀하게 추적하고 장애인 구역 무단 점유를 사전에 차단할 수 있는 차세대 통합 주차 관리 시스템의 필요성이 커지고 있습니다.
+
 
 **1-3. 프로젝트 특장점**
 - UWB와 ESP32 기반 고정밀 위치 추적 (실내 주차장 환경에서도 안정적 측위 가능)
@@ -50,29 +53,29 @@
 
 | **한경빈 (팀장)** | **장준표** | **장서윤** | **정재윤** | **이유진** |
 |:---:|:---:|:---:|:---:|:---:|
-| <img width="120" height="150" src="한경빈.jpg" > | <img width="120" height="150" src="장준표.jpg" > | <img width="120" height="150" src="장서윤.jpg" > | <img width="120" height="150" src="정재윤.png" > | <img width="120" height="150" src="이유진.jpg" > |
+| <img width="120" height="150" src="images/한경빈.jpg" > | <img width="120" height="150" src="images/장준표.jpg" > | <img width="120" height="150" src="images/장서윤.jpg" > | <img width="120" height="150" src="images/정재윤.png" > | <img width="120" height="150" src="images/이유진.jpg" > |
 | 🔗 [GitHub](https://github.com/hustlehan) | 🔗 [GitHub](https://github.com/IAMJP520) | 🔗 [GitHub](https://github.com/seoyun9) | 🔗 [GitHub](https://github.com/jjletsgo) | 🔗 [GitHub](https://github.com/euzin3) |
-| • ROS2 환경 구축 <br> • 서버 및 관제 시스템 <br> • 토픽 관리 | • 차량 HMI 인터페이스 구축 | • 주차장 차단기 제어 <br> • BLE RSSI 기반 차량 정보 수신 | • 경로 계획 <br> • 스마트 스토퍼 제어 <br> • UWB 삼변측량 및 필터링 | • UWB 삼변측량 및 필터링 |
-| ![Team Leader](https://img.shields.io/badge/Team-Leader-blue) <br> ![ROS2](https://img.shields.io/badge/ROS2-Framework-brightgreen) | ![HMI](https://img.shields.io/badge/HMI-Frontend-orange) <br> ![ROS2](https://img.shields.io/badge/ROS2-Framework-brightgreen) | ![BLE](https://img.shields.io/badge/BLE-Comm-lightgrey) <br> ![API](https://img.shields.io/badge/API-Dev-yellow) | ![Path Planning](https://img.shields.io/badge/Path-Planning-success) <br> ![UWB](https://img.shields.io/badge/UWB-Algorithm-red) | ![UWB](https://img.shields.io/badge/UWB-Algorithm-red) |
+| • ROS2 노드 개발 <br> • 서버 및 관제 시스템 구축 <br> • 경로 계획 <br> &nbsp; | • 차량 HMI 인터페이스 구축 <br> • TCP/IP 기반 소켓 통신 모듈 개발 <br> &nbsp; | • 주차장 차단기 제어 <br> • BLE RSSI 기반 차량 정보 수신 <br> &nbsp; | • HW 및 시스템 아키텍처 설계 <br> • 스마트 스토퍼 제어 <br> • UWB 삼변측량 및 필터링 | • UWB 삼변측량 및 필터링 <br> &nbsp; <br> &nbsp; |
+| ![Team Leader](https://img.shields.io/badge/Team-Leader-blue) <br> ![ROS2](https://img.shields.io/badge/ROS2-Node-brightgreen) <br> ![Server](https://img.shields.io/badge/Server-Control-lightblue) | ![HMI](https://img.shields.io/badge/HMI-Frontend-orange) <br> ![Comm](https://img.shields.io/badge/TCP%2FIP-Socket-yellowgreen) <br> &nbsp; | ![BLE](https://img.shields.io/badge/BLE-Comm-lightgrey) <br> ![Barrier](https://img.shields.io/badge/Barrier-Control-yellow) <br> &nbsp; | ![HW](https://img.shields.io/badge/HW-Design-brown) <br> ![Architecture](https://img.shields.io/badge/System-Architecture-lightseagreen) <br> ![UWB](https://img.shields.io/badge/UWB-Algorithm-red) | ![UWB](https://img.shields.io/badge/UWB-Algorithm-red) <br> &nbsp; <br> &nbsp; |
 
 
 ---
 ## **💡3. 시스템 구성도**
 | **서비스 흐름도** |
 |---|
-| [<img src="서비스%20흐름도.png" width="700" alt="서비스 흐름도">](서비스%20흐름도.png) |
+| [<img src="images\서비스%20흐름도.png" width="700" alt="서비스 흐름도">](images\서비스%20흐름도.png) |
 
 | **S/W 구성도** |
 |---|
-| [<img src="SW%20구성도.png" width="700" alt="S/W 구성도">](SW%20구성도.png) |
+| [<img src="images\SW%20구성도.png" width="700" alt="S/W 구성도">](images\SW%20구성도.png) |
 
 | **H/W 구성도** |
 |---|
-| [<img src="HW%20구성도.png" width="700" alt="H/W 구성도">](HW%20구성도.png) |
+| [<img src="images\HW%20구성도.png" width="700" alt="H/W 구성도">](images\HW%20구성도.png) |
 
 ---
 ## **💡4. 작품 소개영상**
-[![한이음 드림업 프로젝트 소개](1.png)](https://www.youtube.com/watch?v=wbkJ4pecB-A)
+[![한이음 드림업 프로젝트 소개](images\1.png)](https://www.youtube.com/watch?v=wbkJ4pecB-A)
 
 ---
 ## **💡5. 핵심 소스코드**
