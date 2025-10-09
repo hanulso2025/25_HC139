@@ -1,5 +1,3 @@
-# 파일 이름: main_launcher_sy.py
-# main_launcher_sy.py - gui_app.py - UI_testing.py
 import sys
 import socket
 import json
@@ -142,4 +140,5 @@ if __name__ == '__main__':
     controller.run()
 
     print("⏳ PyQt 애플리케이션 이벤트 루프 시작. GUI는 트리거를 기다립니다...")
+
     sys.exit(app.exec_())
