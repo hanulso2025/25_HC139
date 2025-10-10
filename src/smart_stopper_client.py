@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""
-ESP32 스토퍼 제어 프로그램
-라즈베리파이에서 ESP32로 TCP 통신을 통해 모터 제어
-"""
 
 import socket
 import time
