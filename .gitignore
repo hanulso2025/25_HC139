@@ -1,0 +1,33 @@
+# ROS2 빌드 파일
+park_ws/build/
+park_ws/install/
+park_ws/log/
+uwb_ws/build/
+uwb_ws/install/
+uwb_ws/log/
+microros_ws/build/
+microros_ws/install/
+microros_ws/log/
+
+# Python 캐시
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+.Python
+
+# IDE 설정
+.vscode/
+.idea/
+**/*.swp
+**/*.swo
+**/*~
+
+# 환경 설정
+**/.env
+**/config/secrets.yaml
+
+# 기타
+.DS_Store
+**/*.log
+**/core
