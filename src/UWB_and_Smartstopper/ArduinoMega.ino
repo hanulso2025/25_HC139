@@ -38,16 +38,19 @@ struct AxisSeg {
 
 static AxisSeg CORRIDORS[] = {
   {SEG_VERT,  20.0f,  0.0f,  180.0f},   
-  {SEG_VERT,  55.0f,  140.0f,  180.0f},  
-  {SEG_VERT,  85.0f,  140.0f,  180.0f},   
-  {SEG_VERT,  115.0f,  140.0f,  180.0f},   
-  {SEG_VERT,  145.0f,  140.0f,  180.0f},  
-  {SEG_VERT, 55.0f,  60.0f,  100.0f},
-  {SEG_VERT, 85.0f,  60.0f,  100.0f},
-  {SEG_VERT, 115.0f,  60.0f,  100.0f},
-  {SEG_VERT, 145.0f,  60.0f,  100.0f},
-  {SEG_HORIZ, 147.0f,  20.0f, 175.0f},  
-  {SEG_HORIZ, 100.0f,  20.0f, 175.0f},   
+  {SEG_VERT,  55.0f,  147.5f,  180.0f},  
+  {SEG_VERT,  85.0f,  147.5f,  180.0f},   
+  {SEG_VERT,  115.0f,  147.5f,  180.0f},   
+  {SEG_VERT,  145.0f,  147.5f,  180.0f},  
+  {SEG_VERT, 147.5f,  92.5f,  147.5f},
+  {SEG_VERT, 55.0f,  60.0f,  92.5f},
+  {SEG_VERT, 85.0f,  60.0f,  92.5f},
+  {SEG_VERT, 115.0f,  60.0f,  92.5f},
+  {SEG_VERT, 145.0f,  60.0f,  92.5f},
+  {SEG_HORIZ, 147.5f,  20.0f, 147.5f},  
+  {SEG_HORIZ, 140.0f,  147.5f, 180.0f}, 
+  {SEG_HORIZ, 92.5f,  20.0f, 147.5f}, 
+  {SEG_HORIZ, 100.0f,  147.5f, 180.0f},   
 };
 static const size_t N_CORRIDORS = sizeof(CORRIDORS) / sizeof(CORRIDORS[0]);
 
@@ -629,7 +632,7 @@ void measureTag(uint8_t tag_id) {
     float jump = sqrt((x - tracker.last_x) * (x - tracker.last_x) + 
                      (y - tracker.last_y) * (y - tracker.last_y));
     
-    if(jump > 100.0) {  // 100cm 이상 점프는 이상치로 간주
+    if(jump > 30.0) {  // 30cm 이상 점프는 이상치로 간주
       sendDebug("TAG" + String(tag_id) + " position jump detected: " + String(jump) + "cm");
       
       // 예측만 수행
