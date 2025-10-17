@@ -94,9 +94,9 @@ float TAG_Z_CM = 13.0f;   // 태그 높이 (cm)
 
 // 앵커 좌표 (cm) 시연 환경에맞게 수정 필요
 const Vec3 ANCHOR[3] = {
-  { -99.0f,  -9.0f, anchor_H },  // Anchor#1 on Serial1
-  {  89.0f,   226.0f, anchor_H },  // Anchor#2 on Serial2
-  {277.0f,   -11.0f, anchor_H }   // Anchor#3 on Serial3
+  { -70.0f,  -70.0f, anchor_H },  // Anchor#1 on Serial1
+  {  100.0f,   300.0f, anchor_H },  // Anchor#2 on Serial2
+  {270.0f,   -70.0f, anchor_H }   // Anchor#3 on Serial3
 };
 
 // ---------- 칼만 필터 구조체 ----------
