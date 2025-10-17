@@ -15,7 +15,7 @@ IPAddress primaryDNS(8, 8, 8, 8);         // 기본 DNS (구글 DNS)
 IPAddress secondaryDNS(8, 8, 4, 4);       // 보조 DNS (구글 DNS)
 
 // ====== 타이머 설정 ======
-#define TIMER_DURATION_MS 800  
+#define TIMER_DURATION_MS 1200  
 
 // ====== L298N 핀 설정 ======
 #define PWM_PIN  14  // ENA와 ENB 둘 다 연결 (공통 PWM)
@@ -38,7 +38,7 @@ bool client_connected = false;
 // ====== 로직 ======
 enum Mode { IDLE, RUN_FWD, RUN_REV };
 volatile Mode mode = IDLE;
-const int SPEED = 160;  // 속도 (0-255)
+const int SPEED = 220;  // 속도 (0-255)
 unsigned long started_ms = 0;
 const unsigned long MAX_RUN_MS = 10000;  // 안전 타임아웃 10초
 
